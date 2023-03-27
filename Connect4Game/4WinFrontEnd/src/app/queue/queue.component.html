@@ -1,1 +1,17 @@
-<p>queue works!</p>
+<h1 style = "text-align: center;">4WinGame Queue</h1>
+<div class = "queue">
+    <table>
+        <tr>
+            <th>Rooms</th>
+            <th>Creator</th>
+            <th></th>
+        </tr>
+        <tr *ngFor = "let games of [].constructor(10); let i = index" class = "tile">
+            <td>RoomID</td>
+            <td>PlayerName</td>
+            <td>
+                <button class = "button button-join" type = "submit">Join</button>
+            </td>
+        </tr>
+    </table>
+</div>
