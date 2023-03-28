@@ -1,1 +1,31 @@
-<p>game works!</p>
+<div>  
+    <button (click)="ClickLeaveGameNow()" class="homeButton" mat-icon-button color="accent" aria-label="Example icon button with a home icon">
+        <mat-icon class="homeIcon">home</mat-icon>
+    </button>
+</div>
+
+<h1 class="move">Make your Move!</h1>
+
+    <ul class="myGrid">
+        <li class="col" *ngFor="let var of [].constructor(7); let x = index"> 
+            <mat-grid-list class="tiles" (click)="MakeMove()" cols="1" rowHeight="1:1">
+                <div>
+                    <mat-grid-tile class="gridTile" *ngFor="let var of [].constructor(6); let y = index">
+                        <div class="chips">
+                            {{y}}, {{x}} 
+                            <!-- board an der jeweiligen position anschauen, und schauen ob 0,1,2 -->
+                        </div>
+                        <!-- hier hochzählen, aber nur mit backend nutzen{{j}} -->
+                    </mat-grid-tile>
+                </div>
+            </mat-grid-list>
+        </li>
+    </ul>
+        <!-- <div class="myList" *ngFor="let var of [].constructor(7); let j = index">
+            <mat-grid-list cols="1" rowHeight="1:1">
+                <mat-grid-tile *ngFor="let var of [].constructor(6); let i = index" >{{i}}</mat-grid-tile>
+            </mat-grid-list>
+        </div> -->
+
+
+
