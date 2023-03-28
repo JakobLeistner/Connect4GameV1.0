@@ -5,6 +5,37 @@ import { Component } from '@angular/core';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent {
+
+
+
+
+export class GameComponent 
+{
+  constructor(signalRService)
+  {
+    this.signalRService.notifyGameStart.subscribe({ //Code });
+  }
+
+
+
+
+
+
+
+
+
+ public ClickLeaveGameNow()
+ {
+  console.log("left game");
+ };
+
+ public MakeMove()
+ {
+  console.log("Move was made");
+  // ganzes board zurückgeben
+  //
+ };
+
+
 
 }

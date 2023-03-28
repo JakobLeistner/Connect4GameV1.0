@@ -1,0 +1,84 @@
+
+.move
+ {
+  text-align: center;
+  font-size: 70px;
+  color: rgb(183, 223, 183);
+  margin-left: 25%;
+  margin-right: 25%;
+  font-family: garamond;
+ }
+
+ .homeButton
+ {
+  position:absolute;
+  top:-0%;
+  right:-0%;
+  height:max-content;
+  width: max-content;
+  color: rgb(160, 238, 168);
+ }
+
+ .homeButton:hover
+ {
+  background-color:rgba(175, 240, 181, 0.253);
+ }
+
+ .homeIcon
+ {
+  position:absolute;
+  top:-0%;
+  right:-0%;
+  height:max-content;
+  width: max-content;
+ }
+ 
+ .homeIcon:hover
+ {
+  font-size: 50px;
+  top:-0%;
+  right:-0%;
+ }
+
+ .myGrid
+ {
+  margin-left: 30%;
+ } 
+
+ li.col 
+ {
+  float:left;
+  list-style-type:none;
+
+  height: 100px;
+  width: 100px;
+  align-items: center;
+  margin-right: 1px;
+}
+
+
+.tiles:hover
+{
+  background-color: rgb(206, 192, 228);
+
+  z-index: 100;
+  size: 900px;
+}
+
+
+.gridTile
+{
+  z-index: 1;
+  background-color: rgb(206, 192, 228);
+  margin-bottom: 100px;
+}
+
+
+.chips
+{
+  background-color: rgba(224, 64, 64, 0.295);
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
