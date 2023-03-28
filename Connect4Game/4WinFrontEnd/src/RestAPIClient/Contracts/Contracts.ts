@@ -44,14 +44,14 @@ export class JoinGameResponse
     }
 }
 
-export class MyPlayer // :Player ?
+export class MyPlayer extends Player// :Player ?    [resolved: extends Player]
 {
     PlayerID: string;
     RTPConnectionID: string;
 
     constructor(playerName: string, rtpConnectionID: string, playerID: string)
     {
-        // playerName ?
+        super(playerName); // playerName?   [resolved: super(playerName)]
         this.PlayerID = playerID;
         this.RTPConnectionID = rtpConnectionID;
     }
@@ -61,7 +61,7 @@ export class RegisterPlayerResponse
 {
     RegisteredPlayer: MyPlayer;
 
-    constructor(registeredPlayer: MyPlayer) // base(playerName) ?
+    constructor(registeredPlayer: MyPlayer) // base(playerName) ?   [resolved: nope brauchen wir nicht]
     {
         this.RegisteredPlayer = registeredPlayer;
     }
@@ -79,7 +79,7 @@ export class WaitingGame
 
 export class WaitingGameResponse
 {
-    WaitingGames: Array<WaitingGame>; // or WaitingGame[]
+    WaitingGames: WaitingGame[] // Array<WaitingGame>; // or WaitingGame[]  [resolved: yes WaitingGame[] needed]
 
     constructor(waitingGames: Array<WaitingGame>)
     {
