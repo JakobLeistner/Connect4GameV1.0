@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+Connect4Game/4WinFrontEnd/package.json
+Connect4Game/4WinFrontEnd/package-lock.json
