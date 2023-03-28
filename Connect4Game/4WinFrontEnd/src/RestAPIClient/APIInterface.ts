@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import { APIUriBuilder } from "./Services/APIUriBuilder";
 import { APIHttpRequest } from "./Services/HttpRequest";
+import { MyPlayer, RegisterPlayerResponse, JoinGameResponse, WaitingGameResponse, GameInfoResponse} from "./Contracts/Contracts"
 
 @Injectable({
     providedIn: 'root'
@@ -46,7 +47,7 @@ export class APIInterface{
         .set("gameID", gameID)
         ))
     }
-    public GetWaitingGames(): Observable<WaitingGamesResponse>{
+    public GetWaitingGames(): Observable<WaitingGameResponse>{
         return this.apiHttpRequest.Get(this.apiUriBuilder.GetAPIUri("GetWaitingGames", new Map()))
     }
     public GetGameInfo(gameID: string, playerID: string): Observable<GameInfoResponse>{
