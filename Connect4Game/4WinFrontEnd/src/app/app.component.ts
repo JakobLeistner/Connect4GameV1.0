@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { PlayerHolder } from '../RestAPIClient/Services/PlayerHolder';
 import { SignalRService } from '../RestAPIClient/Services/SignalRService';
 
 @Component({
@@ -12,7 +14,7 @@ export class AppComponent implements OnInit
 
 
 
-  constructor(public signalRService: SignalRService)
+  constructor(public signalRService: SignalRService, public router: Router, public playerHolder: PlayerHolder)
   {
     
   }
@@ -20,6 +22,8 @@ export class AppComponent implements OnInit
   ngOnInit(): void 
   {
   this.signalRService.ConnectGame();
+  if (this.playerHolder.myPlayer == undefined){this.router.navigate(['/register']);};
+
   
   }
 }

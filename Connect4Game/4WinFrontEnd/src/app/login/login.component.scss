@@ -1,57 +1,43 @@
-.example-container mat-form-field + mat-form-field {
-  margin-left: 8px;
-}
 
-.example-container mat-form-field {
-  width: 220px;
-}
-
-.example-container form {
-  margin-bottom: 20px;
-}
-
-.example-container form > * {
-  margin: 12px 0;
-}
-
-.example-container .mat-radio-button {
-  margin: 0 12px;
-}
-
-.example-form-fields {
+.loginPage
+{
+  // display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+  
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+
+  //display: inline-block;
+  // vertical-align: middle;
+
+  width: 950px;
+  height: 950px;
 }
 
-  section {
-    display: table;
-  }
+// .field
+// {
+//   align-self: center;
+// }
+
+// .RegisterButton
+// {
+//   margin-left: auto;
+//   margin-right: auto;
+//   align-self: center;
   
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-  }
-  
-  .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
-  
+//   // display: flex;
+//   justify-content: center;
+// }
+
+// .RandomNameButton
+// {
+//   margin-left: auto;
+//   margin-right: auto;
+//   align-self: center;
+
+//   // vertical-align: middle;
+//   // display: flex;
+//   justify-content: center;
+// }
