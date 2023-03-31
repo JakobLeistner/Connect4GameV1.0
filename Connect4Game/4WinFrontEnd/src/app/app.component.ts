@@ -12,18 +12,12 @@ export class AppComponent implements OnInit
 {
   title = '4WinFrontEnd';
 
-
-
   constructor(public signalRService: SignalRService, public router: Router, public playerHolder: PlayerHolder)
-  {
-    
-  }
+  { }
 
   ngOnInit(): void 
   {
-  this.signalRService.ConnectGame();
-  if (this.playerHolder.myPlayer == undefined){this.router.navigate(['/register']);};
-
-  
+    this.signalRService.ConnectGame();
+    if (this.playerHolder.myPlayer == undefined) this.router.navigate(['/register']);
   }
 }

@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-// import { GameInfo, GameInfoResponse, Player, WaitingGameResponse } from '../Contracts/Contracts';
 
 @Injectable({
     providedIn: 'root'

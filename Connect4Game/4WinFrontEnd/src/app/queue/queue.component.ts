@@ -10,6 +10,7 @@ import { SignalRService } from '../../RestAPIClient/Services/SignalRService';
   templateUrl: './queue.component.html',
   styleUrls: ['./queue.component.scss']
 })
+
 export class QueueComponent 
 {
 
@@ -19,104 +20,53 @@ export class QueueComponent
 
   
   constructor(public apiInterface: APIInterface, public playerHolder: PlayerHolder, public router: Router, public signalRService: SignalRService)
-  {
-  }
+  { }
 
   public CreateGame()
-{
-  this.apiInterface.CreateGame(this.playerHolder.myPlayer as MyPlayer).subscribe  
-  ({
-    next: (response: any) => 
-    { 
-    },
-    error: (error: any) => {console.error(error);},
-    complete: () => {}
-    
-  });
-}
+  {
+    this.apiInterface.CreateGame(this.playerHolder.myPlayer as MyPlayer).subscribe();
+  }
 
-public JoinGame(waitingGameListIndex: number)
-{
-  
-  this.apiInterface.JoinGame(this.myPlayer, waitingGameListIndex).subscribe();
-  
+  public JoinGame(waitingGameListIndex: number)
+  {
+    this.apiInterface.JoinGame(this.myPlayer, waitingGameListIndex).subscribe();
+  }
 
-}
-
-
-public SaveAndUpdateQueue() 
-{ 
-  this.apiInterface.GetWaitingGames().subscribe
-  ({
-    next: (response: any) => 
-    { 
-    
-    this.queue = response.waitingGames;
-    this.nameQueue = [];
-      for(let i=0; i<this.queue.length; i++ )
-      {
-        this.nameQueue[i] = this.queue[i].playerName;
-      }
-
-    },
-
-    error: (error: any) => {console.error(error);},
-    complete: () => {}
-    
-  });
+  public SaveAndUpdateQueue() 
+  { 
+    this.apiInterface.GetWaitingGames().subscribe
+    ({
+      next: (response: any) => 
+      { 
+        this.queue = response.waitingGames;
+        this.nameQueue = [];
+        for(let i=0; i<this.queue.length; i++ )
+        {
+          this.nameQueue[i] = this.queue[i].playerName;
+        }
+      },
+      error: (error: any) => {console.error(error);},
+      complete: () => {}
+    });
+  }
 
 
+  ngAfterViewInit()
+  {
+    this.SaveAndUpdateQueue();
+    if (this.myPlayer == undefined) this.router.navigate(['/register']);
 
-
-
-}
-
-
-
-
-
-ngAfterViewInit()
-{
-  this.SaveAndUpdateQueue();
-
-  if (this.myPlayer == undefined){this.router.navigate(['/register']);};
-
-  this.signalRService.notifyWaitingListUpdated.subscribe(() => this.SaveAndUpdateQueue());
-  this.signalRService.notifyGameStart.subscribe
-  ({
-    next: (resgameId: any) => 
-    { 
-    this.router.navigate(['/game'], { queryParams: { gameid: resgameId } });
-    },
-
-    error: (error: any) => {console.error(error);},
-    complete: () => {}
-
-  });
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-    
-
-}
-
-
+    this.signalRService.notifyWaitingListUpdated.subscribe(() => this.SaveAndUpdateQueue());
+    this.signalRService.notifyGameStart.subscribe
+    ({
+      next: (resgameId: any) => 
+      { 
+        this.router.navigate(['/game'], { queryParams: { gameid: resgameId } });
+      },
+      error: (error: any) => {console.error(error);},
+      complete: () => {}
+    });
+  }
 
 }
 

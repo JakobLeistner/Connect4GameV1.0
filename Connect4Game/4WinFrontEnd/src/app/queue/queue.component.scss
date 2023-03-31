@@ -1,28 +1,27 @@
 
-
-
-
-table {
+table
+{
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 85%;
     margin-left: auto;
     margin-right: auto;
-
-    
 }
 
-td, th {
+td, th
+{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even) {
+tr:nth-child(even)
+{
     background-color: #dddddd;
 }
 
-.button {
+.button
+{
     border: none;
     color: white;
     padding: 4px 16px;
@@ -35,13 +34,15 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
-.button-join {
+.button-join
+{
     background-color: white;
     color: black;
     border: 2px solid #051f41;
 }
 
-.button-join:hover {
+.button-join:hover
+{
     background-color: #6a61bb;
     color: white;
 }

@@ -45,8 +45,7 @@ export class APIInterface{
     }
     public GetWaitingGames(): Observable<WaitingGamesResponse>
     {
-        let result = this.apiHttpRequest.Get(this.apiUriBuilder.GetAPIUri("GetWaitingGames", new Map()));
-        return result;
+        return this.apiHttpRequest.Get(this.apiUriBuilder.GetAPIUri("GetWaitingGames", new Map()));
     }
 
     public GetGameInfo(gameID: string, playerID: string): Observable<GameInfoResponse>{

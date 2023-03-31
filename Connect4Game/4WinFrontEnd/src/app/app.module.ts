@@ -1,8 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserAnimationsModule } from '@angular/animations/browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,11 +13,7 @@ import { MatListModule} from '@angular/material/list';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-
-
 import { MatCardModule} from '@angular/material/card';
-
-//nicht commiten
 
 
 @NgModule({
@@ -31,7 +25,6 @@ import { MatCardModule} from '@angular/material/card';
   ],
   imports: [
     BrowserModule,
-    // BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MatGridListModule,
@@ -41,10 +34,10 @@ import { MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    FormsModule
-    
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

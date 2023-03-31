@@ -2,14 +2,14 @@ import { Component, Injectable } from "@angular/core";
 
 @Injectable()
 export class APIUriBuilder {
-    constructor(apiController:String) {
+    constructor(apiController:String)
+    {
         this.APIController = apiController;
-        this.TargetServerURL = "https://localhost:44320/";//window.location.origin + "/api/";//environment.apiEndpoint;
+        this.TargetServerURL = "https://localhost:44320/";
     }
+
     APIController:String;   
-
     TargetServerURL:String;
-
 
     public GetAPIUri(apiTarget:String, parameter:Map<string, object>):String{
         let counter:number = 0;
@@ -27,6 +27,3 @@ export class APIUriBuilder {
     }
 
 }
-
-
-
