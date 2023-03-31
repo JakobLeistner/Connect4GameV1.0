@@ -120,6 +120,7 @@ export class GameComponent
    ({
      next: (res: Player) => 
      { 
+
       this.winnerName=res.playerName;
         if(this.winnerName==this.player1name){this.GameState = "won";}
         if(this.winnerName==this.opponentName){this.GameState = "lost";}
@@ -133,12 +134,6 @@ export class GameComponent
    });
 
   }
-
-public ClickBackToLobby() :void
-{
-  this.router.navigate(['/queue']);
-}
-
 
 
 
@@ -160,6 +155,7 @@ public ClickBackToLobby() :void
 
  public ClickLeaveGameNow() :void
  {
+  this.router.navigate(['/queue']);
 
   this.apiInterface.LeaveGame(this.myPlayer, this.gameID).subscribe()
 
