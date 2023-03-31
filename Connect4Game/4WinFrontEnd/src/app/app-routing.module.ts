@@ -14,11 +14,6 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    GameComponent,
-    QueueComponent
-  ],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

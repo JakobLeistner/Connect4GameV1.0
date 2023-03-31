@@ -1,33 +1,62 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-import { Player } from '../Contracts/Contracts';
+// import { GameInfo, GameInfoResponse, Player, WaitingGameResponse } from '../Contracts/Contracts';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SignalRService {
     public hubProxy: any;
-    public notifyGameFinished: EventEmitter<Player>; 
+    public notifyGameStart: EventEmitter<any>; 
+    public notifyGameUpdated: EventEmitter<any>; 
+    public notifyGameFinished: EventEmitter<any>; 
+    public notifyWaitingListUpdated: EventEmitter<any>; 
     public connection: any;
-    public connectionID:any;
-    constructor(){
-        this.hubProxy = new signalR.HubConnectionBuilder();
-        this.notifyGameFinished = new EventEmitter();
+    public connectionId:any;
+    hubUrl: string = "https://localhost:44320";
+    constructor()
+    {
+        this.hubProxy = new signalR.HubConnectionBuilder()
+        .withUrl(this.hubUrl + "/fourwingamehub")
+        .withAutomaticReconnect()
+        .build();
+        this.notifyGameStart = new EventEmitter();
+        this.notifyGameUpdated = new EventEmitter(); 
+        this.notifyGameFinished = new EventEmitter(); 
+        this.notifyWaitingListUpdated = new EventEmitter();
     }
     
     public ConnectGame(){
-        this.hubProxy.on("GameFinished", (winner: any) => { 
+
+        this.hubProxy.on("GameStart", (gameid: string) => { 
+            this.notifyGameStart.emit(gameid);
+         });
+
+         this.hubProxy.on("GameUpdated", (gameid: string) => { 
+            this.notifyGameUpdated.emit(gameid);
+         });
+    
+        
+         this.hubProxy.on("GameFinished", (winner: any) => { 
+
             this.notifyGameFinished.emit(winner);
          });
+
+         this.hubProxy.on("WaitingListUpdated", () => { 
+            this.notifyWaitingListUpdated.emit();
+         });
+
+
+
          try{
             this.hubProxy
             .start()
             .then(() => { 
                 this.connection = true;
-                this.connectionID = this.hubProxy.connection.connectionID;
+                this.connectionId = this.hubProxy.connection.connectionId;
             });
          } catch (err){
-            console.error("Couldn´t connect");
+            console.error("Couldn't connect");
          }
         
     }

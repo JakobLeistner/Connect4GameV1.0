@@ -1,36 +1,36 @@
 export class Player
 {
-    PlayerName: string;
+    playerName: string;
 
     constructor(playerName: string)
     {
-        this.PlayerName = playerName;
+        this.playerName = playerName;
     }
 }
 
 export class GameInfo
 {
-    Board: number[][];
-    Opponent: Player;
-    YourMove: boolean;
-    PlayerNumber: number;
+    board: number[][];
+    opponent: Player;
+    yourMove: boolean;
+    playerNumber: number;
     
     constructor(board: number[][], opponent: Player, yourMove: boolean, playerNumber: number)
     {
-        this.Board = board;
-        this.Opponent = opponent;
-        this.YourMove = yourMove;
-        this.PlayerNumber = playerNumber;
+        this.board = board;
+        this.opponent = opponent;
+        this.yourMove = yourMove;
+        this.playerNumber = playerNumber;
     }
 }
 
 export class GameInfoResponse
 {
-    GameInfo: GameInfo;
+    gameInfo: GameInfo;
 
     constructor(gameInfo: GameInfo)
     {
-        this.GameInfo = gameInfo;
+        this.gameInfo = gameInfo;
     }
 }
 
@@ -46,43 +46,43 @@ export class JoinGameResponse
 
 export class MyPlayer extends Player// :Player ?    [resolved: extends Player]
 {
-    PlayerID: string;
-    RTPConnectionID: string;
+    playerID: string;
+    rtpConnectionID: string;
 
     constructor(playerName: string, rtpConnectionID: string, playerID: string)
     {
         super(playerName); // playerName?   [resolved: super(playerName)]
-        this.PlayerID = playerID;
-        this.RTPConnectionID = rtpConnectionID;
+        this.playerID = playerID;
+        this.rtpConnectionID = rtpConnectionID;
     }
 }
 
 export class RegisterPlayerResponse
 {
-    RegisteredPlayer: MyPlayer;
+    registeredPlayer: MyPlayer;
 
     constructor(registeredPlayer: MyPlayer) // base(playerName) ?   [resolved: nope brauchen wir nicht]
     {
-        this.RegisteredPlayer = registeredPlayer;
+        this.registeredPlayer = registeredPlayer;
     }
 }
 
 export class WaitingGame
 {
-    PlayerName: string;
+    playerName: string;
 
     constructor(playerName: string)
     {
-        this.PlayerName = playerName;
+        this.playerName = playerName;
     }
 }
 
-export class WaitingGameResponse
+export class WaitingGamesResponse
 {
-    WaitingGames: WaitingGame[] // Array<WaitingGame>; // or WaitingGame[]  [resolved: yes WaitingGame[] needed]
+    waitingGames: WaitingGame[] // Array<WaitingGame>; // or WaitingGame[]  [resolved: yes WaitingGame[] needed]
 
     constructor(waitingGames: Array<WaitingGame>)
     {
-        this.WaitingGames = waitingGames;
+        this.waitingGames = waitingGames;
     }
 }

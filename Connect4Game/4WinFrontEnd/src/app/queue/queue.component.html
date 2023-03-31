@@ -1,16 +1,17 @@
 <h1 style = "text-align: center;">4WinGame Queue</h1>
 <div class = "queue">
+    <button class = "CreateGameButton" type = "submit" (click)="CreateGame()">Create New Game</button>
     <table>
         <tr>
             <th>Rooms</th>
             <th>Creator</th>
             <th></th>
         </tr>
-        <tr *ngFor = "let games of [].constructor(10); let i = index" class = "tile">
-            <td>RoomID</td>
-            <td>PlayerName</td>
+        <tr *ngFor = "let name of nameQueue; let i = index" class = "tile">
+            <td>{{i+1}}</td>
+            <td>{{name}}</td>
             <td>
-                <button class = "button button-join" type = "submit">Join</button>
+                <button class = "button button-join" (click)="JoinGame(i)" type = "submit">Join</button>
             </td>
         </tr>
     </table>

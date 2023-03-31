@@ -4,7 +4,7 @@ import { Component, Injectable } from "@angular/core";
 export class APIUriBuilder {
     constructor(apiController:String) {
         this.APIController = apiController;
-        this.TargetServerURL = window.location.origin + "/api/";//environment.apiEndpoint;
+        this.TargetServerURL = "https://localhost:44320/";//window.location.origin + "/api/";//environment.apiEndpoint;
     }
     APIController:String;   
 
