@@ -38,6 +38,7 @@ width: var(--field-width);
 height: var(--field-height); 
 
 color: rgb(85, 25, 44);
+transform: scale(1.2);
 
 }
 
@@ -48,23 +49,21 @@ color: rgb(85, 25, 44);
 
 .shuffle
 {
-  margin-top: 7px;
-  margin-right: 500px;
+  margin-top: 0px;
   transform: scale(1.2);
 
 }
 
 .play
 {
-  margin-top: 7px;
-  margin-left: 150px;
+  margin-top: 5px;
   transform: scale(1.2);
 }
 
 .label
 {
   font-size: 35px;
-  margin-left: 50px;
+  margin-left: 80px;
 }
 
 
