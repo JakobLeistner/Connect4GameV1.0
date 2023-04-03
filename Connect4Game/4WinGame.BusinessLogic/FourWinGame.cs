@@ -37,9 +37,9 @@ namespace _4WinGame.BusinessLogic
             Guid uuid = Guid.NewGuid();
             ID = uuid.ToString();
         }
-        public void DoMove(int column, FourWinGamePlayer player)
+        public void DoMove(int col, FourWinGamePlayer p)
         {
-            string playerID = player.ID;
+            string playerID = p.ID;
             if (Player1.ID != playerID && Player2.ID != playerID)
             {
                 throw new PlayerNotInGameException();
@@ -48,30 +48,50 @@ namespace _4WinGame.BusinessLogic
             {
                 throw new NotYourTurnException();
             }
-            if (column < 1 || column > 7)
+            if (col < 1 || col > 7)
             {
                 throw new BoardOutOfRangeException();
             }
-            if (Board[0][column-1] != 0)
+            if (Board[0][col-1] != 0)
             {
                 throw new BoardColumnIsFullException();
             }
 
-            for (int row = BoardHeight - 1; row > -1; row--)
+            col--;
+            int row = -1;
+            for (int r = BoardHeight - 1; r >= 0; r--)
             {
-                if (Board[row][column-1] == 0)
+                if (Board[r][col] == 0)
                 {
-                    Board[row][column-1] = CurrentPlayer;
+                    row = r;
                     break;
                 }
             }
 
+            if (row == -1)
+            {
+                return;
+            }
+            Board[row][col] = CurrentPlayer;
+
             OnGameStateChange?.Invoke(this, new EventArgs());
-            CurrentPlayer = (CurrentPlayer - 1) * -1 + 2; // Toggle CurrentPlayer
+            TogglePlayer();
 
             if (isBoardFull() || GetWinner() != null)
             {
                 InvokeGameFinished();
+            }
+        }
+
+        public void TogglePlayer()
+        {
+            if (CurrentPlayer == 1)
+            {
+                CurrentPlayer = 2;
+            }
+            else if (CurrentPlayer == 2)
+            {
+                CurrentPlayer = 1;
             }
         }
 
@@ -87,55 +107,113 @@ namespace _4WinGame.BusinessLogic
 
         public FourWinGamePlayer GetWinner()
         {
- 
-            // Horizontal
-            for (int row = 0; row < BoardHeight; row++)
+            bool win;
+
+            // Überprüfen horizontal
+            for (int r = 0; r < 6; r++)
             {
-                for (int column = 0; column < BoardWidth - 3; column++)
+                for (int c = 0; c <= 3; c++)
                 {
-                    int winner = (Board[row][column] + Board[row][column + 1] + Board[row][column + 2] + Board[row][column + 3]) / 4;
-                    if ((Board[row][column] + Board[row][column + 1] + Board[row][column + 2] + Board[row][column + 3]) % 4 == 0 && Board[row][column] == Board[row][column + 1] && Board[row][column] == Board[row][column + 2] && winner != 0)
+                    int player = Board[r][c];
+                    if (player == 0)
                     {
-                        return GetPlayerFromPlayerIndex((int)winner);
+                        continue;
+                    }
+
+                    win = true;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (Board[r][c + i] != player)
+                        {
+                            win = false;
+                            break;
+                        }
+                    }
+
+                    if (win)
+                    {
+                        return GetPlayerFromPlayerIndex(player);
                     }
                 }
             }
-
-            // Vertical
-            for (int row = 0; row < BoardHeight - 3; row++)
+            // Überprüfen vertikal
+            for (int c = 0; c < 7; c++)
             {
-                for (int column = 0; column < BoardWidth; column++)
+                for (int r = 0; r <= 2; r++)
                 {
-                    int winner = (Board[row][column] + Board[row + 1][column] + Board[row + 2][column] + Board[row + 3][column]) / 4;
-                    if ((Board[row][column] + Board[row + 1][column] + Board[row + 2][column] + Board[row + 3][column]) % 4 == 0 && Board[row][column] == Board[row + 1][column] && Board[row][column] == Board[row + 2][column] && winner != 0)
+                    int player = Board[r][c];
+                    if (player == 0)
                     {
-                        return GetPlayerFromPlayerIndex((int)winner);
+                        continue;
+                    }
+
+                    win = true;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (Board[r + i][c] != player)
+                        {
+                            win = false;
+                            break;
+                        }
+                    }
+
+                    if (win)
+                    {
+                        return GetPlayerFromPlayerIndex(player);
                     }
                 }
             }
-
-            // Diagonal Top Left To Bottom Right
-            for (int row = 0; row < BoardHeight - 3; row++)
+            // Überprüfen diagonal "\"
+            for (int c = 0; c <= 3; c++)
             {
-                for (int column = 0; column < BoardWidth - 3; column++)
+                for (int r = 0; r <= 2; r++)
                 {
-                    int winner = (Board[row][column] + Board[row + 1][column + 1] + Board[row + 2][column + 2] + Board[row + 3][column + 3]) / 4;
-                    if ((Board[row][column] + Board[row + 1][column + 1] + Board[row + 2][column + 2] + Board[row + 3][column + 3]) % 4 == 0 && Board[row][column] == Board[row + 1][column + 1] && Board[row][column] == Board[row + 2][column + 2] && winner != 0)
+                    int player = Board[r][c];
+                    if (player == 0)
                     {
-                        return GetPlayerFromPlayerIndex((int)winner);
+                        continue;
+                    }
+
+                    win = true;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (Board[r + i][c + i] != player)
+                        {
+                            win = false;
+                            break;
+                        }
+                    }
+
+                    if (win)
+                    {
+                        return GetPlayerFromPlayerIndex(player);
                     }
                 }
             }
-
-            // Diagonal Bottom Left To Top Right
-            for (int row = BoardHeight-1; row > 2; row--)
+            // Überprüfen diagonal "/"
+            for (int c = 7 - 1; c >= 4 - 1; c--)
             {
-                for (int column = 0; column < BoardWidth - 3; column++)
+                for (int r = 0; r <= 2; r++)
                 {
-                    int winner = (Board[row][column] + Board[row][column] + Board[row - 1][column + 1] + Board[row - 2][column + 2] + Board[row - 3][column + 3]) / 4;
-                    if ((Board[row][column] + Board[row - 1][column + 1] + Board[row - 2][column + 2] + Board[row - 3][column + 3]) % 4 == 0 && Board[row][column] == Board[row - 1][column + 1] && Board[row][column] == Board[row - 2][column + 2] && winner != 0)
+                    int player = Board[r][c];
+                    if (player == 0)
                     {
-                        return GetPlayerFromPlayerIndex((int)winner);
+                        continue;
+                    }
+
+                    win = true;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (Board[r + i][c - i] != player)
+                        {
+                            win = false;
+                            break;
+                        }
+                    }
+
+                    if (win)
+                    {
+                        return GetPlayerFromPlayerIndex(player);
                     }
                 }
             }
@@ -206,19 +284,5 @@ namespace _4WinGame.BusinessLogic
             }
             return false;
         }
-
-        public FourWinGamePlayer GetOpponent(FourWinGamePlayer player)
-        {
-            if (Player1.ID == player.ID)
-            {
-                return Player2;
-            }
-            if (Player2. ID == player.ID)
-            {
-                return Player1;
-            }
-            throw new PlayerNotInGameException();
-        }
-
     }
 }

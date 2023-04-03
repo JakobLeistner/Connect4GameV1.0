@@ -10,7 +10,7 @@ namespace _4WinGame.BusinessLogic.Contracts.Interfaces
     public interface IFourWinGamesService
     {
         List<IFourWinGame> Games { get; }
-        List<FourWinGamePlayer> WaitingGames { get; set; }
+        List<FourWinGamePlayer> Queue { get; set; }
         EventHandler OnGameStarted { get; set; }
         List<FourWinGamePlayer> AllPlayers { get; set; }
         EventHandler OnWaitingListUpdated { get; set; }

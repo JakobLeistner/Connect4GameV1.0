@@ -20,13 +20,13 @@ namespace _4WinGame.RESTApi.Controllers
     public class FourWinGameController : ControllerBase
     {
 
-        private ConnectionService connectionService;
+        private ConnectionService connection;
         private IFourWinGamesService fourWinGameService;
         private FourWinGameEventHandler fourWinGameEventHandler;
 
-        public FourWinGameController(ConnectionService connectionService, IFourWinGamesService fourWinGames, FourWinGameEventHandler fourWinGameEventHandler)
+        public FourWinGameController(ConnectionService connection, IFourWinGamesService fourWinGames, FourWinGameEventHandler fourWinGameEventHandler)
         {
-            this.connectionService = connectionService;
+            this.connection = connection;
             this.fourWinGameService = fourWinGames;
             this.fourWinGameEventHandler = fourWinGameEventHandler;
         }
@@ -34,17 +34,18 @@ namespace _4WinGame.RESTApi.Controllers
         [HttpPost("RegisterPlayer")]
         public IActionResult RegisterPlayer([FromQuery] string name, [FromQuery] string RTPconnectionID)
         {
-            if(connectionService.PlayerIDToConnectionIDlist.Where(c => c.Value == RTPconnectionID).Count()>0)
+            if(connection.PlayerIDToConnectionIDlist.Where(c => c.Value == RTPconnectionID).Count()>0)
             {
                 throw new ConnectionIDNotUniqueException("You are already logged in with an other account!");
             }
 
             MyPlayer player = new MyPlayer(name, RTPconnectionID, Guid.NewGuid().ToString());
-            if(!connectionService.ConnectedIDs.Contains(RTPconnectionID))
+            if(!connection.ConnectedIDs.Contains(RTPconnectionID))
             {
                 throw new ConnectionIDNotFoundException();
             }
-            connectionService.AddPlayer(player, player.PlayerID, RTPconnectionID);
+            connection.PlayerIDToConnectionIDlist.Add(player.PlayerID, RTPconnectionID);
+            connection.AllPlayers.Add(player);
             FourWinGamePlayer fourWinGamePlayer = new FourWinGamePlayer(player.PlayerName, player.PlayerID);
             fourWinGameService.AllPlayers.Add(fourWinGamePlayer);
             return Ok( new RegisterPlayerResponse(player));
@@ -58,11 +59,11 @@ namespace _4WinGame.RESTApi.Controllers
             {
                 throw new PlayerNotFoundException();
             }
-            if (fourWinGameService.WaitingGames.Where(p => p.ID == player.PlayerID).FirstOrDefault() != null)
+            if (fourWinGameService.Queue.Where(p => p.ID == player.PlayerID).FirstOrDefault() != null)
             {
                 throw new PlayerAlreadyCreatedWaitingGame();
             }
-            fourWinGameService.WaitingGames.Add(found);
+            fourWinGameService.Queue.Add(found);
             fourWinGameService.OnWaitingListUpdated.Invoke(found, EventArgs.Empty);
             return Ok();
         }
@@ -71,11 +72,11 @@ namespace _4WinGame.RESTApi.Controllers
         public IActionResult JoinGame([FromBody] MyPlayer p1, [FromQuery] int waitingGameListIndex)
         {
             FourWinGamePlayer found = fourWinGameService.AllPlayers.Where(player => player.ID == p1.PlayerID).FirstOrDefault();
-            FourWinGamePlayer gameCreatedPlayer = fourWinGameService.WaitingGames.ElementAt(waitingGameListIndex);
+            FourWinGamePlayer gameCreatedPlayer = fourWinGameService.Queue.ElementAt(waitingGameListIndex);
             if (found==null) {
                 throw new PlayerNotFoundException();
             }
-            if(waitingGameListIndex-1 > fourWinGameService.WaitingGames.Count)
+            if(waitingGameListIndex-1 > fourWinGameService.Queue.Count)
             {
                 throw new WaitingListEntryNotFoundException();
             }
@@ -167,7 +168,7 @@ namespace _4WinGame.RESTApi.Controllers
         [HttpGet("GetWaitingGames")]
         public IActionResult GetWaitingGames()
         {
-            return Ok(new WaitingGamesResponse(fourWinGameService.WaitingGames.Select(player => new WaitingGame(player.Name)).ToList()));
+            return Ok(new WaitingGamesResponse(fourWinGameService.Queue.Select(player => new WaitingGame(player.Name)).ToList()));
         }
 
         [HttpGet("GetGameInfo")]
@@ -201,8 +202,8 @@ namespace _4WinGame.RESTApi.Controllers
                 playerNumber = 2;
             }
             bool yourmove = (playerID==fourWinGame.GetCurrentPlayer().ID) ? true : false;
-            FourWinGamePlayer fourWinGamePlayerOpponent = fourWinGame.GetOpponent(found);
-            MyPlayer opponent = connectionService.AllPlayers.Where(p => p.PlayerID == fourWinGamePlayerOpponent.ID).FirstOrDefault();
+            FourWinGamePlayer fourWinGamePlayerOpponent = (fourWinGame.Player1.ID == playerID) ? fourWinGame.Player2 : fourWinGame.Player1;
+            MyPlayer opponent = connection.AllPlayers.Where(p => p.PlayerID == fourWinGamePlayerOpponent.ID).FirstOrDefault();
             return Ok(new GameInfoResponse(new GameInfo(fourWinGame.Board, (Player)opponent, yourmove, playerNumber)));
         }    
         

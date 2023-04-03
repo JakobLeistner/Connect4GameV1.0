@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9781910F-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4WinGame.BusinessLogic.Tests", "4WinGame.BusinessLogic.Tests\4WinGame.BusinessLogic.Tests.csproj", "{DF9A19F6-05D0-4B2B-B41C-D24ED38F427F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRTestClient", "SignalRTestClient\SignalRTestClient.csproj", "{0A420C49-64DE-4F07-9A92-A8123B6CB002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRTestClient", "SignalRTestClient\SignalRTestClient.csproj", "{0A420C49-64DE-4F07-9A92-A8123B6CB002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
