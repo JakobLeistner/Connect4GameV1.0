@@ -13,7 +13,7 @@ namespace _4WinGame.BusinessLogic
     public class FourWinGamesService : IFourWinGamesService
     {
         public List<IFourWinGame> Games { get; set; }  
-        public List<FourWinGamePlayer> WaitingGames { get; set; }
+        public List<FourWinGamePlayer> Queue { get; set; }
         public EventHandler OnGameStarted { get; set; }
         public EventHandler OnWaitingListUpdated { get; set; }
         public List<FourWinGamePlayer> AllPlayers { get; set; }
@@ -22,17 +22,17 @@ namespace _4WinGame.BusinessLogic
         public FourWinGamesService()
         {
             AllPlayers = new List<FourWinGamePlayer>();
-            WaitingGames = new List<FourWinGamePlayer>();
+            Queue = new List<FourWinGamePlayer>();
             Games = new List<IFourWinGame>();
         }
 
         public IFourWinGame JoinWaitingGame(FourWinGamePlayer playerFromWaitingList, FourWinGamePlayer playerJoining)
         {
-            if (!WaitingGames.Any(player => player.Equals(playerFromWaitingList)))
+            if (!Queue.Any(player => player.Equals(playerFromWaitingList)))
             {
                 throw new PlayerNotInWaitingListException();
             }
-            WaitingGames.Remove(playerFromWaitingList);
+            Queue.Remove(playerFromWaitingList);
             OnWaitingListUpdated.Invoke(this, EventArgs.Empty);
             IFourWinGame game = new FourWinGame(playerFromWaitingList, playerJoining);
             Games.Add(game);

@@ -19,17 +19,5 @@ namespace _4WinGame.RESTApi.Services
             ConnectedIDs = new List<string>();
             AllPlayers = new List<MyPlayer>(); 
         }
-
-        public void AddPlayer(MyPlayer player, string playerID, string connectionID)
-        {
-            PlayerIDToConnectionIDlist.Add(playerID, connectionID);
-            AllPlayers.Add(player);
-        }
-
-        public void LeavePlayer(string playerID)
-        {
-            PlayerIDToConnectionIDlist.Remove(playerID);
-        }
-
     }
 }
