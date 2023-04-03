@@ -1,17 +1,36 @@
 
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
 <div class="loginPage">
-  <form class="registerForm"  (submit)="RegisterPlayer()" >
-    <mat-form-field class="field" appearance="fill">
-      <mat-label>Type your name</mat-label>
-      <input matInput type="text" id="InputName">
+  <form (submit)="RegisterPlayer()" >
+    <mat-form-field class="field" appearance="outline">
+
+      <mat-label class="label">Type your name</mat-label>
+
+      <input class="input" matInput id="InputName" required matInput>
+
+      <button  class="shuffle" type="button" mat-icon-button matSuffix (click)="GenerateRandomName()">  
+        <mat-icon class="shuffle"> shuffle </mat-icon>  
+      </button>  
+
+      <button class="play" type="button" mat-icon-button matSuffix (click)="RegisterPlayer()">  
+        <mat-icon class="play">play_arrow</mat-icon>
+      </button>  
+
     </mat-form-field>
-
-    <div class="RandomNameButton">
-      <button type="button" class="RandomNameButton" (click)="GenerateRandomName()">{{RandomNameButton}}</button>
-    </div>
-
-    <div class="RegisterButton">
-      <button type="submit" class="RegisterButton" >{{RegisterButton}}</button>
-    </div>
   </form>
 </div>
+
+
+    <!-- <div class="RandomNameButton">
+      <button type="button" class="RandomNameButton" (click)="GenerateRandomName()">{{RandomNameButton}}</button>
+    </div> -->
+<!-- 
+    <div class="RegisterButton">
+      <button type="submit" class="RegisterButton" >{{RegisterButton}}</button>
+       vllt: <mat-icon>play_arrow</mat-icon> oder  <mat-icon>play_circle_filled</mat-icon> oder 	<mat-icon>play_circle_outline</mat-icon> -->
+    <!-- </div>
+  </form> -->

@@ -1,43 +1,86 @@
 
 .loginPage
 {
-  // display: block;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
+// //   color: rgb(104, 70, 89);
+--field-width: 300px;
+--field-height: 100px;
+
+  margin-left: calc((100% - var(--field-width))/2);
+  margin-top: calc((50% - var(--field-height))/2);
+
+// //   // align-self: center;
   
-  display: flex;
-  justify-content: center;
+// //   // display: flex;
+// // //   justify-content: center;
 
-  //display: inline-block;
-  // vertical-align: middle;
 
-  width: 950px;
-  height: 950px;
+  width: 50%;
+  height: 500px;
+
+  // margin-top: auto;
+  // margin-bottom: auto;
+// //   //display: inline-block;
+// //   // vertical-align: middle;
+//   // display: block;
 }
 
-// .field
+.field
+{
+// //   align-self: center;
+//   margin-top: 100%;
+width: var(--field-width); 
+height: var(--field-height); 
+
+color: rgb(109, 54, 71);
+
+}
+
+// mat-mdc-form-field-flex
 // {
-//   align-self: center;
+
 // }
 
-// .RegisterButton
-// {
-//   margin-left: auto;
-//   margin-right: auto;
-//   align-self: center;
+.shuffle
+{
+  margin-top: 7px;
+  transform: scale(1.2);
+
+}
+
+.play
+{
+  margin-top: 7px;
+
+  transform: scale(1.2);
+}
+
+.label
+{
+  margin-top: 700px;
+}
+
+
+.mat-form-field-label
+{
+  color: aqua !important;
+}
+// // // .RegisterButton
+// // // {
+// // //   margin-left: auto;
+// // //   margin-right: auto;
+// // //   align-self: center;
   
-//   // display: flex;
-//   justify-content: center;
-// }
+// // //   // display: flex;
+// // //   justify-content: center;
+// // // }
 
-// .RandomNameButton
-// {
-//   margin-left: auto;
-//   margin-right: auto;
-//   align-self: center;
+// // // .RandomNameButton
+// // // {
+// // //   margin-left: auto;
+// // //   margin-right: auto;
+// // //   align-self: center;
 
-//   // vertical-align: middle;
-//   // display: flex;
-//   justify-content: center;
-// }
+// // //   // vertical-align: middle;
+// // //   // display: flex;
+// // //   justify-content: center;
+// // // }

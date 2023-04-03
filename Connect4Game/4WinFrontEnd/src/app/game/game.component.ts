@@ -100,7 +100,7 @@ export class GameComponent
       this.winnerName = res.playerName;
       if (this.winnerName == this.player1name) this.GameState = "won";
       if (this.winnerName == this.opponentName) this.GameState = "lost";
-      if (this.winnerName == undefined) this.GameState = "draw";
+      if (this.winnerName == "") this.GameState = "draw";
       console.log(this.winnerName);
      },
      error: (error: any) => {console.error(error);},
@@ -117,10 +117,12 @@ export class GameComponent
 
   public ClickMoveWasMade(col:number): void
   {
-    if(this.yourMove)
+    if(this.yourMove && this.GameState=="running")
     {
       this.apiInterface.DoMove(col, this.gameID, this.myPlayer).subscribe();
+      
     }
+
   };
 
 }
