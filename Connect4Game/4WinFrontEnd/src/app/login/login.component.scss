@@ -1,8 +1,16 @@
+html
+{
+  min-height:100%;/* make sure it is at least as tall as the viewport */
+}
+
+
+
 
 .loginPage
 {
+height: 650px;
 // //   color: rgb(104, 70, 89);
---field-width: 300px;
+--field-width: 400px;
 --field-height: 100px;
 
   margin-left: calc((100% - var(--field-width))/2);
@@ -14,14 +22,12 @@
 // // //   justify-content: center;
 
 
-  width: 50%;
-  height: 500px;
 
   // margin-top: auto;
   // margin-bottom: auto;
 // //   //display: inline-block;
 // //   // vertical-align: middle;
-//   // display: block;
+  // display: block;
 }
 
 .field
@@ -31,7 +37,7 @@
 width: var(--field-width); 
 height: var(--field-height); 
 
-color: rgb(109, 54, 71);
+color: rgb(85, 25, 44);
 
 }
 
@@ -43,6 +49,7 @@ color: rgb(109, 54, 71);
 .shuffle
 {
   margin-top: 7px;
+  margin-right: 500px;
   transform: scale(1.2);
 
 }
@@ -50,20 +57,21 @@ color: rgb(109, 54, 71);
 .play
 {
   margin-top: 7px;
-
+  margin-left: 150px;
   transform: scale(1.2);
 }
 
 .label
 {
-  margin-top: 700px;
+  font-size: 35px;
+  margin-left: 50px;
 }
 
 
-.mat-form-field-label
-{
-  color: aqua !important;
-}
+// .mat-form-field-label
+// {
+//   color: aqua !important;
+// }
 // // // .RegisterButton
 // // // {
 // // //   margin-left: auto;
