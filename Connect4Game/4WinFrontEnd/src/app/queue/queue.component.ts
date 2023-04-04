@@ -44,6 +44,7 @@ export class QueueComponent
         {
           this.nameQueue[i] = this.queue[i].playerName;
         }
+        console.log(this.nameQueue);
       },
       error: (error: any) => {console.error(error);},
       complete: () => {}

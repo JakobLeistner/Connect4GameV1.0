@@ -9,7 +9,6 @@ export class APIUriBuilder {
         this.TargetServerURL = "http://localhost:44320/";
     }
 
-    VariableToCreateChangesInAngularBuild: string = "You can delete this line";
     APIController:String;   
     TargetServerURL:String;
 
@@ -25,6 +24,7 @@ export class APIUriBuilder {
             }
             counter++;    
         }
+        console.log("Url: " + resApiRes);
         return resApiRes;
     }
 
