@@ -12,7 +12,8 @@ export class SignalRService {
     public notifyWaitingListUpdated: EventEmitter<any>; 
     public connection: any;
     public connectionId:any;
-    hubUrl: string = "https://localhost:44320";
+    // changed from https to http to fix ssl certificate error on server
+    hubUrl: string = "http://localhost:44320";
     constructor()
     {
         this.hubProxy = new signalR.HubConnectionBuilder()

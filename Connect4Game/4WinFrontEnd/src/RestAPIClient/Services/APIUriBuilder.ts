@@ -5,9 +5,11 @@ export class APIUriBuilder {
     constructor(apiController:String)
     {
         this.APIController = apiController;
-        this.TargetServerURL = "https://localhost:44320/";
+        // changed from https to http to fix ssl certificate error on server
+        this.TargetServerURL = "http://localhost:44320/";
     }
 
+    VariableToCreateChangesInAngularBuild: string = "You can delete this line";
     APIController:String;   
     TargetServerURL:String;
 
