@@ -14,7 +14,7 @@ export class SignalRService {
     public connectionId:any;
     // changed from https to http to fix ssl certificate error on server
     // and now changed it back to https
-    hubUrl: string = "http://192.168.0.1:44320";
+    hubUrl: string = "http://192.168.0.1:93";
     constructor()
     {
         this.hubProxy = new signalR.HubConnectionBuilder()

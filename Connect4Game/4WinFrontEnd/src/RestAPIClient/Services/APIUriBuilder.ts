@@ -7,7 +7,7 @@ export class APIUriBuilder {
         this.APIController = apiController;
         // changed from https to http to fix ssl certificate error on server
         // and now changed it back to https
-        this.TargetServerURL = "http://192.168.0.1:44320/";
+        this.TargetServerURL = "http://192.168.0.1:93/";
     }
 
     APIController:String;   
