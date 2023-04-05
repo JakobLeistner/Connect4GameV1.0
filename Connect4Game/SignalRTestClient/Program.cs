@@ -14,7 +14,7 @@ namespace SignalRTestClient
         private static async Task TestSignalRClient()
         {
             HubConnection hubConnection;
-            string serverAddress = "http://192.168.0.1:44320/fourwingamehub";
+            string serverAddress = "http://192.168.0.1:93/fourwingamehub";
             do
             {
                 await Task.Delay(3000);
