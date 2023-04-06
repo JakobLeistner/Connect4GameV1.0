@@ -5,9 +5,7 @@ export class APIUriBuilder {
     constructor(apiController:String)
     {
         this.APIController = apiController;
-        // changed from https to http to fix ssl certificate error on server
-        // and now changed it back to https
-        this.TargetServerURL = "http://192.168.0.1:93/";
+        this.TargetServerURL = "https://localhost:44320/";
     }
 
     APIController:String;   
@@ -25,7 +23,6 @@ export class APIUriBuilder {
             }
             counter++;    
         }
-        console.log("Url: " + resApiRes);
         return resApiRes;
     }
 

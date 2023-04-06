@@ -105,7 +105,6 @@ export class GameComponent
       if (this.winnerName == this.player1name) this.GameState = "won";
       if (this.winnerName == this.opponentName) this.GameState = "lost";
       if (this.winnerName == "") this.GameState = "draw";
-      console.log(this.winnerName);
      },
      error: (error: any) => {console.error(error);},
      complete: () => {}
@@ -124,7 +123,6 @@ export class GameComponent
     if(this.yourMove && this.GameState=="running")
     {
       this.apiInterface.DoMove(col, this.gameID, this.myPlayer).subscribe();
-      
     }
 
   };

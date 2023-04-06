@@ -244,13 +244,16 @@ namespace _4WinGame.BusinessLogic
                 throw new PlayerNotInGameException();
 
             // Fill the board to avoid a draw if a player leaves
-            for (int row = 0; row < BoardHeight; row++)
+            if (GetWinner() == null) 
             {
-                for (int column = 0; column < BoardWidth; column++)
+                for (int row = 0; row < BoardHeight; row++)
                 {
-                    if (Board[row][column] == 0)
+                    for (int column = 0; column < BoardWidth; column++)
                     {
-                        Board[row][column] = (playerNum - 1) * -1 + 2;
+                        if (Board[row][column] == 0)
+                        {
+                            Board[row][column] = (playerNum - 1) * -1 + 2;
+                        }
                     }
                 }
             }
