@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { APIInterface } from '../../RestAPIClient/APIInterface';
 import { MyPlayer, WaitingGame, WaitingGamesResponse } from '../../RestAPIClient/Contracts/Contracts';
@@ -20,7 +20,7 @@ export class QueueComponent
   columnsToDisplay = ['room', 'creator','join'];
 
   
-  constructor(public apiInterface: APIInterface, public playerHolder: PlayerHolder, public router: Router, public signalRService: SignalRService)
+  constructor(public apiInterface: APIInterface, public playerHolder: PlayerHolder, public router: Router, public signalRService: SignalRService, private ref: ChangeDetectorRef)
   { }
 
   public CreateGame()
@@ -45,6 +45,7 @@ export class QueueComponent
         {
           this.nameQueue[i] = this.queue[i].playerName;
         }
+        this.ref.detectChanges();
       },
       error: (error: any) => {console.error(error);},
       complete: () => {}

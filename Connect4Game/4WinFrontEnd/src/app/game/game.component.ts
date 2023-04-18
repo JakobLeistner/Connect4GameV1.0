@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIInterface } from '../../RestAPIClient/APIInterface';
 import { GameInfo, MyPlayer, Player } from '../../RestAPIClient/Contracts/Contracts';
@@ -38,7 +38,7 @@ export class GameComponent
   public GameState: string="running";
 
     
-  constructor(private playerHolder: PlayerHolder, private signalRService: SignalRService, public router: Router, public apiInterface: APIInterface, private route: ActivatedRoute)
+  constructor(private playerHolder: PlayerHolder, private signalRService: SignalRService, public router: Router, public apiInterface: APIInterface, private route: ActivatedRoute, private ref: ChangeDetectorRef)
   { }
 
   ngAfterViewInit(): void 
@@ -62,6 +62,8 @@ export class GameComponent
         this.opponentName = resgameinfo.gameInfo.opponent.playerName;
         this.yourMove = resgameinfo.gameInfo.yourMove;
         this.playerNumber = resgameinfo.gameInfo.playerNumber;
+        
+        this.ref.detectChanges();
       },
       error: (error: any) => {console.error(error);},
       complete: () => {}
@@ -84,6 +86,8 @@ export class GameComponent
           this.opponentName = resgameinfo.gameInfo.opponent.playerName;
           this.yourMove = resgameinfo.gameInfo.yourMove;
           this.playerNumber = resgameinfo.gameInfo.playerNumber;
+          
+          this.ref.detectChanges();
         },
         error: (error: any) => {console.error(error);},
         complete: () => {}
@@ -102,7 +106,6 @@ export class GameComponent
       if (this.winnerName == this.player1name) this.GameState = "won";
       if (this.winnerName == this.opponentName) this.GameState = "lost";
       if (this.winnerName == "") this.GameState = "draw";
-      console.log(this.winnerName);
      },
      error: (error: any) => {console.error(error);},
      complete: () => {}
@@ -121,7 +124,6 @@ export class GameComponent
     if(this.yourMove && this.GameState=="running")
     {
       this.apiInterface.DoMove(col, this.gameID, this.myPlayer).subscribe();
-      
     }
 
   };

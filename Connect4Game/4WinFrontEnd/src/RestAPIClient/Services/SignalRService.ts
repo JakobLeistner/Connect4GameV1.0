@@ -12,6 +12,7 @@ export class SignalRService {
     public notifyWaitingListUpdated: EventEmitter<any>; 
     public connection: any;
     public connectionId:any;
+
     hubUrl: string = "https://localhost:44320";
     constructor()
     {
