@@ -12,19 +12,54 @@
 
       <input class="input" matInput id="InputName" >
 
-      <button  class="shuffle" type="button" mat-icon-button matPreffix (click)="GenerateRandomName()">  
-        <mat-icon class="shuffle"> shuffle </mat-icon>  
+      <button class="shuffle" type="button" mat-icon-button matSuffix (click)="GenerateRandomName()">  
+        <mat-icon class="shuffle"> shuffle </mat-icon>
       </button> 
 
       <button class="play" type="button" mat-icon-button matSuffix (click)="RegisterPlayer()">  
         <mat-icon class="play">play_arrow</mat-icon>
       </button>  
 
-      <mat-hint>max length: 12 characters</mat-hint>
+      <!-- <mat-hint >max length: 12 characters</mat-hint> -->
 
+      
     </mat-form-field>
   </form>
+
+
 </div>
+
+
+
+<!-- #fieldRef [adOutlineBorder]="fieldRef" [outlineWidth]="3" [outlineColor]="'green'" [outlineRadius]="10" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput>
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-icon matSuffix>clear</mat-icon>
+    <mat-hint>Automatic label</mat-hint>
+  </mat-form-field>
+
+ -->
+
+
 
 
     <!-- <div class="RandomNameButton">

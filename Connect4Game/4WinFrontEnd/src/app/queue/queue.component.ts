@@ -17,6 +17,7 @@ export class QueueComponent
   myPlayer = this.playerHolder.myPlayer as MyPlayer;
   queue: WaitingGame[] = [];
   nameQueue: string[] = [];
+  columnsToDisplay = ['room', 'creator','join'];
 
   
   constructor(public apiInterface: APIInterface, public playerHolder: PlayerHolder, public router: Router, public signalRService: SignalRService)

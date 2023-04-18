@@ -1,17 +1,17 @@
-html
-{
-  min-height:100%;/* make sure it is at least as tall as the viewport */
-}
+// html
+// {
+//   min-height:100%;/* make sure it is at least as tall as the viewport */
+// }
 
 
 
 
 .loginPage
 {
-height: 650px;
+height: 500px;
 // //   color: rgb(104, 70, 89);
 --field-width: 400px;
---field-height: 100px;
+--field-height: 50px;
 
   margin-left: calc((100% - var(--field-width))/2);
   margin-top: calc((50% - var(--field-height))/2);
@@ -30,6 +30,11 @@ height: 650px;
   // display: block;
 }
 
+
+
+
+
+
 .field
 {
 // //   align-self: center;
@@ -37,34 +42,41 @@ height: 650px;
 width: var(--field-width); 
 height: var(--field-height); 
 
-color: rgb(85, 25, 44);
-transform: scale(1.2);
+
+transform: scale(2);
 
 }
 
-// mat-mdc-form-field-flex
-// {
 
+// .shuffle
+// {
+//   margin-top: 0px;
+//   transform: scale(1.2);
 // }
 
-.shuffle
-{
-  margin-top: 0px;
-  transform: scale(1.2);
+// .play
+// {
+//   margin-top: 5px;
+//   transform: scale(1.2);
+// }
 
-}
 
-.play
-{
-  margin-top: 5px;
-  transform: scale(1.2);
-}
+// mat-form-field
+// {
+//   background-color: aquamarine;
+// }
 
-.label
-{
-  font-size: 35px;
-  margin-left: 80px;
-}
+// .mat-focused //background color when focused
+// {
+//   background-color: rgb(255, 0, 0);
+// }
+
+
+// .mat-focused //background color when focused & hint font color
+// {
+//   background-color: aquamarine;
+//   border-color: aquamarine;
+// }
 
 
 // .mat-form-field-label
@@ -91,3 +103,23 @@ transform: scale(1.2);
 // // //   // display: flex;
 // // //   justify-content: center;
 // // // }
+
+
+
+.shuffle
+{
+    color: rgb(212, 185, 152);
+}
+.play
+{
+    color: rgb(212, 185, 152);
+}
+
+
+
+// .mat-focused //background color when focused & hint font color
+// {
+//     // color: rgb(212, 185, 152);
+//     color: #c2185b;
+// }
+

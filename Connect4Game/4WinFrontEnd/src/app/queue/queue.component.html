@@ -1,8 +1,8 @@
-<div class="queuePage">
+<!-- <div class="queuePage">
     <h1 style = "text-align: center;">4WinGame Queue</h1>
     <div class = "queue">
-        <button class = "CreateGameButton" type = "submit" (click)="CreateGame()">Create New Game</button>
-        <table>
+        <button class = "CreateGameButton" type = "submit" (click)="CreateGame()">Create New Game</button> -->
+        <!-- <table>
             <tr>
                 <th>Rooms</th>
                 <th>Creator</th>
@@ -18,3 +18,55 @@
         </table>
     </div>
 </div>
+ -->
+
+ 
+
+
+ <div class="queuePage">
+    <!-- <h1 style = "text-align: center;">4WinGame Queue</h1> -->
+
+    <div class = "queue">
+        <!-- <button class = "CreateGameButton" type = "button" (click)="CreateGame()">Create New Game
+            <mat-icon>add</mat-icon>
+        </button> -->
+        <div class="CreateGameButton">
+          <button mat-raised-button color="primary" (click)="CreateGame()">+ Create New Game </button>
+        </div>
+            <table mat-table class="matTable" [dataSource]="nameQueue">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <ng-container matColumnDef="room">
+              <th class="headerCell" mat-header-cell *matHeaderCellDef> Rooms </th>
+              <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="creator">
+              <th class="headerCell" mat-header-cell *matHeaderCellDef> Creator </th>
+              <td mat-cell *matCellDef="let name of nameQueue; let i = index"> {{name}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="join">
+              <th class="headerCell" mat-header-cell *matHeaderCellDef> Join </th>
+              <td mat-cell *matCellDef="let name of nameQueue; let i = index">
+                <button class = "joinButton" type="button" (click)="JoinGame(i)" mat-icon-button color="accent" > 
+                    <mat-icon class="joinIcon">input</mat-icon>
+                </button>
+              </td>
+
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+          </table>
+    </div>
+</div>
+
+
+
+
+
+
+

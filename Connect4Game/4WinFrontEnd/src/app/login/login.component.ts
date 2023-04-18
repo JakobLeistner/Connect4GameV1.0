@@ -5,7 +5,6 @@ import { MyPlayer, RegisterPlayerResponse } from '../../RestAPIClient/Contracts/
 import { PlayerHolder } from '../../RestAPIClient/Services/PlayerHolder';
 import { SignalRService } from '../../RestAPIClient/Services/SignalRService';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

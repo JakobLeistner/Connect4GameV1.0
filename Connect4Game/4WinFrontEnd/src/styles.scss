@@ -1,15 +1,47 @@
+
+
+
+@use '@angular/material' as mat;
+
+// $my-primary: mat.define-palette(mat.$teal-palette, 500);
+// $my-accent: mat.define-palette(mat.$lime-palette, A200, A100, A400);
+
+
+
+//MAKE YOUR OWN
+
+// $indigo-palette: (
+//  50: #e8eaf6,
+//  100: #c5cae9,
+//  200: #9fa8da,
+//  300: #7986cb,
+//  // ... continues to 900
+//  contrast: (
+//    50: rgba(black, 0.87),
+//    100: rgba(black, 0.87),
+//    200: rgba(black, 0.87),
+//    300: white,
+//    // ... continues to 900
+//  )
+// );
+
+
+//SET PRIMARY, ACCENT and WARN
+// $my-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// // The "warn" palette is optional and defaults to red if not specified.
+// $my-warn: mat.define-palette(mat.$red-palette);
+
+
+
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 // @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 // @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
 
-body { 
-    background: linear-gradient(#7A7265,#7a72655e,#7A7265);
-    
-//  font-family: Roboto, Arial, sans-serif;
-//  margin: 0;
-}
+
 
 // .basic-container {
 //   padding: 30px;
@@ -19,3 +51,132 @@ body {
 //   font-size: 8pt;
 //   float: right;
 // }
+
+
+body { 
+    background: linear-gradient(#7A7265,#48392A,#48392A);
+}
+
+
+
+
+
+
+
+// mat-form-field //slightly wrong background inside field
+// {
+//   background-color: aquamarine;
+// }
+
+
+// .mat-mdc-text-field-wrapper //correct background inside the field
+// {
+//   background-color: green;
+// }
+
+// .mdc-text-field--outlined //correct background inside the field slightly over outline
+// {
+
+//     background-color: aqua;
+//     color: aqua;
+// }
+
+
+
+
+// .shuffle
+// {
+//     color: bisque;
+// }
+
+
+// .mdc-text-field--outlined //moves icons and input text, but not the label
+// {
+//     padding-left: 100px !important; //moves textfield and shuffle icon to the right
+//     //width: 100px !important;
+//     font-size: 50px;     //cahnges font-size of input
+//     font-weight: 1000;   //changes weight of input font
+//     color: bisque;
+
+
+// }
+
+
+
+
+
+
+
+
+// .label.ng-tns-c14-0 //changes the color of the label
+// {
+//     color: bisque;
+// }
+
+
+// .mdc-floating-label //changes position and size of floating label, but does not adjust its path or the outline
+// {
+//     background-color: rgb(55, 121, 64); // change backgroundcolor of label
+//     margin-left: 120px;
+//     margin-top: 50px;
+//     font-size: 50px !important;
+//     color: bisque;
+// }
+
+
+
+
+//WORKING COLOR CHANGES
+
+
+// .ng-valid div //changes incon and hint color
+// {
+//     color: #009e08 !important;
+// }
+
+// .ng-valid div input //changes input text color
+// {
+//     color: rgb(255, 6, 6) !important;
+// }
+
+// .mat-form-field-appearance-outline //changes buttons and hint color
+// {
+//     color: #ff0404 !important
+// }
+
+// .mat-form-field-outline-thick
+// {
+//     color: #ff0404 !important
+// }
+
+
+
+// .mat-mdc-form-field
+// {
+//     --mat-mdc-form-field-floating-label-scale: 0.75; 
+// }
+
+
+// .mdc-theme-primary
+// {
+//     color: #ff0e0e;
+//     //3f51b5
+// }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// .ng-valid div input //changes input text color
+// {
+//     color: rgb(255, 6, 6) !important;
+// }
+
+
+.ng-valid div input //changes input text color
+{
+    color: rgb(212, 185, 152) !important;
+}
+
+
+

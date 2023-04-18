@@ -15,6 +15,11 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule} from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+
+// import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+
 
 
 @NgModule({
@@ -36,7 +41,12 @@ import { MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    FormsModule 
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatTableModule
+    // FormControl,
+    // FormGroupDirective,
+    // NgForm
   ],
   providers: 
   [

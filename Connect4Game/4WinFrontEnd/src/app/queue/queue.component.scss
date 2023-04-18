@@ -1,49 +1,94 @@
 
-table
+// table
+// {
+//     font-family: arial, sans-serif;
+//     border-collapse: collapse;
+//     width: 85%;
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+
+// td, th
+// {
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 8px;
+// }
+
+// tr:nth-child(even)
+// {
+//     background-color: #dddddd;
+// }
+
+// .button
+// {
+//     border: none;
+//     color: white;
+//     padding: 4px 16px;
+//     text-align: center;
+//     text-decoration: none;
+//     display: inline-block;
+//     font-size: 16px;
+//     margin: 4px 2px;
+//     transition-duration: 0.4s;
+//     cursor: pointer;
+// }
+
+// .button-join
+// {
+//     background-color: white;
+//     color: black;
+//     border: 2px solid #051f41;
+// }
+
+// .button-join:hover
+// {
+//     background-color: #6a61bb;
+//     color: white;
+// }
+
+.CreateGameButton
 {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: calc(45% + 18px);
+    
+    width: 200px;
+    height: 50px;
+    margin-top: 2.5%;
+
+    margin-bottom: 1%;
+    // margin-bottom: 1%;
+    // border-radius: 6px;
+    border-color: #c2185b;
+    font-size: 30px;
+    color: #c2185b;
+    transform: scale(2);
+    // font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
 }
 
-td, th
+///1% 24px horizontal
+
+// .plus
+// {
+
+// }
+// .CreateGameButton:hover
+// {
+
+//     // border-color: #580a2a;
+//     // color: #580a2a;
+//     // font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+// }
+
+.joinButton
 {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    color: #c2185b;
 }
 
-tr:nth-child(even)
+.headerCell
 {
-    background-color: #dddddd;
+    font-size: 20px;
 }
 
-.button
-{
-    border: none;
-    color: white;
-    padding: 4px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
 
-.button-join
-{
-    background-color: white;
-    color: black;
-    border: 2px solid #051f41;
-}
 
-.button-join:hover
-{
-    background-color: #6a61bb;
-    color: white;
-}
-
+// background-color: rgb(212, 185, 152) !important;

@@ -5,6 +5,7 @@ import { GameInfo, MyPlayer, Player } from '../../RestAPIClient/Contracts/Contra
 import { PlayerHolder } from '../../RestAPIClient/Services/PlayerHolder';
 import { SignalRService } from '../../RestAPIClient/Services/SignalRService';
 
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
