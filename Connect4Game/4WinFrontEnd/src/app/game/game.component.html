@@ -28,8 +28,10 @@
                     <mat-grid-tile class="gridTile" *ngFor="let var of [].constructor(6); let y = index">
                          <!-- board an der jeweiligen position anschauen, und schauen ob 0,1,2 -->
                         <div *ngIf="board[y][x]==0" class="chips empty"></div>
-                        <div *ngIf="board[y][x]==1" class="chips p1color"></div>
-                        <div *ngIf="board[y][x]==2" class="chips p2color"></div>
+                        <div *ngIf="board[y][x]==1 && playerNumber==1" class="chips p1color"></div>
+                        <div *ngIf="board[y][x]==1 && playerNumber==2" class="chips p2color"></div>
+                        <div *ngIf="board[y][x]==2 && playerNumber==1" class="chips p2color"></div>
+                        <div *ngIf="board[y][x]==2 && playerNumber==2" class="chips p1color"></div>
                         <!-- hier hochzählen, aber nur mit backend nutzen{{j}} -->
                     </mat-grid-tile>
                 </div>
